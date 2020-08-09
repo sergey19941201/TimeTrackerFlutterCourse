@@ -9,7 +9,7 @@ class FirstSignInPage extends StatelessWidget {
 
   Future<void> _signInAnonymously() async {
     await Future.delayed(
-        const Duration(milliseconds: 2300)); // Optional parameter: () {});
+        const Duration(milliseconds: 10)); // Optional parameter: () {});
     onSignIn(true);
     //throw Exception('my exception');
   }
