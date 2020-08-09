@@ -4,6 +4,11 @@ import 'package:time_tracker_flutter_course/app/sign_in/social_sign_in_button.da
 import 'package:time_tracker_flutter_course/common_widgets/custom_raised_button.dart';
 
 class FirstSignInPage extends StatelessWidget {
+  Future<void> _signInAnonymously() async {
+    await Future.delayed(const Duration(milliseconds: 300)); // Optional parameter: () {});
+    throw Exception('my exception');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +67,7 @@ class FirstSignInPage extends StatelessWidget {
             text: 'Go anonymous',
             textColor: Colors.black,
             color: Colors.lime[300],
-            onPressed: () {},
+            onPressed: _signInAnonymously,
           ),
         ],
       ),
