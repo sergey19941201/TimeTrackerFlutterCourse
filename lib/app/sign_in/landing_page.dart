@@ -1,35 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/first_sign_in_page.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/home_page.dart';
+import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class LandingPage extends StatefulWidget {
+  LandingPage({@required this.auth});
+
+  final AuthBase auth;
+
   @override
   _LandingPageState createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
-  bool _isSignedIn;
+  User _user;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _isSignedIn = true;
+    _checkCurrentUser();
   }
 
-  void _updateUser(bool dummyFirebaseComplete) {
+  Future<void> _checkCurrentUser() async {
+    User user = await widget.auth.currentUser();
+    _updateUser(user);
+  }
+
+  void _updateUser(User user) {
     setState(() {
-      _isSignedIn = dummyFirebaseComplete;
+      _user = user;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_isSignedIn) {
-      return HomePage(onSignOut: () => _updateUser(false)); // Temp
+    if (_user == null) {
+      return FirstSignInPage(
+        auth: widget.auth,
+        onSignIn: _updateUser,
+      );
     }
 
-    return FirstSignInPage(
-      onSignIn: _updateUser,
-    );
+    return HomePage(
+        auth: widget.auth, onSignOut: () => _updateUser(null)); // Temp
   }
 }

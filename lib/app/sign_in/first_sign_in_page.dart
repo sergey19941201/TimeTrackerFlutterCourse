@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/sign_in_button.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/social_sign_in_button.dart';
-import 'package:time_tracker_flutter_course/common_widgets/custom_raised_button.dart';
+import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class FirstSignInPage extends StatelessWidget {
-  FirstSignInPage({@required this.onSignIn});
-  final Function(bool) onSignIn;
+  FirstSignInPage({@required this.auth, @required this.onSignIn});
+
+  final Function(User) onSignIn;
+  final AuthBase auth;
 
   Future<void> _signInAnonymously() async {
-    await Future.delayed(
-        const Duration(milliseconds: 10)); // Optional parameter: () {});
-    onSignIn(true);
-    //throw Exception('my exception');
+    try {
+      User user = await auth.signInAnonymously();
+      onSignIn(user);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
