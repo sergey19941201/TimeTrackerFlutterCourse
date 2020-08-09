@@ -8,7 +8,13 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  bool _isSignedIn = false;
+  bool _isSignedIn;
+
+  @override
+  void initState(){
+    super.initState();
+    _isSignedIn = true;
+  }
 
   void _updateUser(bool dummyFirebaseComplete) {
     setState(() {
