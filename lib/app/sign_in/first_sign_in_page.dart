@@ -4,9 +4,14 @@ import 'package:time_tracker_flutter_course/app/sign_in/social_sign_in_button.da
 import 'package:time_tracker_flutter_course/common_widgets/custom_raised_button.dart';
 
 class FirstSignInPage extends StatelessWidget {
+  FirstSignInPage({@required this.onSignIn});
+  final Function(bool) onSignIn;
+
   Future<void> _signInAnonymously() async {
-    await Future.delayed(const Duration(milliseconds: 300)); // Optional parameter: () {});
-    throw Exception('my exception');
+    await Future.delayed(
+        const Duration(milliseconds: 2300)); // Optional parameter: () {});
+    onSignIn(true);
+    //throw Exception('my exception');
   }
 
   @override
