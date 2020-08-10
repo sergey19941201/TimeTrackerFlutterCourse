@@ -20,7 +20,7 @@ abstract class AuthBase {
 }
 
 class Auth implements AuthBase {
-  bool isSignedIn = true;
+  bool isSignedIn = false;
 
   @override
   StreamController<User> streamController = StreamController();

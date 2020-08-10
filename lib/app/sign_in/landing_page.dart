@@ -53,7 +53,11 @@ class _LandingPageState extends State<LandingPage> {
             return HomePage(
                 auth: widget.auth, onSignOut: () => _updateUser(null)); // Temp
           } else {
-            return Scaffold(body: Center(child: CircularProgressIndicator()));
+            //return Scaffold(body: Center(child: CircularProgressIndicator()));
+            return FirstSignInPage(
+              auth: widget.auth,
+              onSignIn: _updateUser,
+            );
           }
         });
   }
