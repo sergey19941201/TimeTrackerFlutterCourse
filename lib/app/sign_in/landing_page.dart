@@ -19,6 +19,9 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     super.initState();
     _checkCurrentUser();
+    widget.auth.streamController.stream.listen((user) {
+      print('user from stream: ${user?.uid}');
+    });
   }
 
   Future<void> _checkCurrentUser() async {

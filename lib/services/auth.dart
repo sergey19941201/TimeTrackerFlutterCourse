@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 class User {
@@ -7,6 +9,9 @@ class User {
 }
 
 abstract class AuthBase {
+  // ignore: close_sinks
+  StreamController<User> streamController;
+
   Future<User> currentUser();
 
   Future<User> signInAnonymously();
@@ -15,13 +20,20 @@ abstract class AuthBase {
 }
 
 class Auth implements AuthBase {
-  bool isSignedIn = true;
+  bool isSignedIn = false;
+
+  @override
+  StreamController<User> streamController = StreamController();
 
   @override
   Future<User> currentUser() async {
     if (isSignedIn) {
-      return User(uid: 'myUid');
+      var user = User(uid: 'myUid');
+      streamController.add(user);
+      return user;
     }
+
+    streamController.add(null);
     return null;
   }
 
@@ -31,11 +43,14 @@ class Auth implements AuthBase {
         const Duration(milliseconds: 10)); // Optional parameter: () {});
 
     isSignedIn = true;
-    return User(uid: 'myUid');
+    var user = User(uid: 'myUid');
+    streamController.add(user);
+    return user;
   }
 
   @override
   Future<void> signOut() async {
     isSignedIn = false;
+    streamController.add(null);
   }
 }
