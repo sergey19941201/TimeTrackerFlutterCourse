@@ -19,9 +19,9 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     super.initState();
     _checkCurrentUser();
-    widget.auth.streamController.stream.listen((user) {
-      print('user from stream: ${user?.uid}');
-    });
+//    widget.auth.streamController.stream.listen((user) {
+//      print('user from stream: ${user?.uid}');
+//    });
   }
 
   Future<void> _checkCurrentUser() async {
@@ -37,14 +37,24 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_user == null) {
-      return FirstSignInPage(
-        auth: widget.auth,
-        onSignIn: _updateUser,
-      );
-    }
+    return StreamBuilder<User>(
+        stream: widget.auth.streamController.stream,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            User user = snapshot.data;
 
-    return HomePage(
-        auth: widget.auth, onSignOut: () => _updateUser(null)); // Temp
+            if (user == null) {
+              return FirstSignInPage(
+                auth: widget.auth,
+                onSignIn: _updateUser,
+              );
+            }
+
+            return HomePage(
+                auth: widget.auth, onSignOut: () => _updateUser(null)); // Temp
+          } else {
+            return Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+        });
   }
 }
