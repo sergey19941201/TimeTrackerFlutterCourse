@@ -16,11 +16,15 @@ abstract class AuthBase {
 
   Future<User> signInAnonymously();
 
+  Future<User> signInWithEmailAndPassword(String email, String password);
+
+  Future<User> createUserWithEmailAndPassword(String email, String password);
+
   Future<void> signOut();
 }
 
 class Auth implements AuthBase {
-  bool isSignedIn = false;
+  bool isSignedIn = true;
 
   @override
   StreamController<User> streamController = StreamController();
@@ -46,6 +50,25 @@ class Auth implements AuthBase {
     var user = User(uid: 'myUid');
     streamController.add(user);
     return user;
+  }
+
+  @override
+  Future<User> signInWithEmailAndPassword(String email, String password) async {
+    isSignedIn = true;
+    // Red input error highlights will work if exception thrown
+    throw Exception('gjgjgjjggjjgj');
+    await Future.delayed(const Duration(milliseconds: 2000));
+    return User(uid: "myUid");
+  }
+
+  @override
+  Future<User> createUserWithEmailAndPassword(
+      String email, String password) async {
+    isSignedIn = true;
+    // Red input error highlights will work if exception thrown
+    throw Exception('gjgjgjjggjjgj');
+    await Future.delayed(const Duration(milliseconds: 2000));
+    return User(uid: "myUid");
   }
 
   @override
