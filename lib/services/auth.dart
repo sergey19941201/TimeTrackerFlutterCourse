@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 
 class User {
   User({@required this.uid});
@@ -56,7 +57,8 @@ class Auth implements AuthBase {
   Future<User> signInWithEmailAndPassword(String email, String password) async {
     isSignedIn = true;
     // Red input error highlights will work if exception thrown
-    throw Exception('gjgjgjjggjjgj');
+    throw PlatformException(
+        code: 'CUSTOM_PLATFORM_EXCEPTION', message: 'User does not exist');
     await Future.delayed(const Duration(milliseconds: 2000));
     return User(uid: "myUid");
   }
@@ -66,7 +68,8 @@ class Auth implements AuthBase {
       String email, String password) async {
     isSignedIn = true;
     // Red input error highlights will work if exception thrown
-    throw Exception('gjgjgjjggjjgj');
+    throw PlatformException(
+        code: 'CUSTOM_PLATFORM_EXCEPTION', message: 'User does not exist');
     await Future.delayed(const Duration(milliseconds: 2000));
     return User(uid: "myUid");
   }
