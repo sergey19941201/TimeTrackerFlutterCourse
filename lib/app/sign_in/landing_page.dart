@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/first_sign_in_page.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/home_page.dart';
 import 'package:time_tracker_flutter_course/services/auth.dart';
-import 'package:time_tracker_flutter_course/services/auth_provider.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    auth = AuthProvider.of(context);
+    auth = Provider.of<AuthBase>(context, listen: false);
     return StreamBuilder<User>(
         stream: auth.streamController.stream,
         builder: (context, snapshot) {
