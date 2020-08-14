@@ -6,10 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f3c088-66a6-4463-b8ed-002c68cbd69d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/app/sign_in/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/sign_in/first_sign_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/sign_in/first_sign_in_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/sign_in/landing_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/sign_in/landing_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common_widgets/custom_raised_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common_widgets/custom_raised_button.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +79,10 @@
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state x="2228" y="386" key="#com.intellij.fileTypes.FileTypeChooser/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596706816078" />
+    <state x="2173" y="332" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597248572738">
+      <screen x="1920" y="171" width="1536" height="832" />
+    </state>
+    <state x="2173" y="332" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597248572738" />
     <state x="2544" y="353" key="AndroidProcessChooserDialog" timestamp="1596654737282">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
@@ -88,26 +91,26 @@
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state x="2288" y="351" key="FileChooserDialogImpl/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596958313341" />
-    <state width="560" height="260" key="GridCell.Tab.0.bottom" timestamp="1596966122155">
+    <state width="489" height="254" key="GridCell.Tab.0.bottom" timestamp="1597429004347">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state width="937" height="238" key="GridCell.Tab.0.bottom/1920.171.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596876990703" />
-    <state width="560" height="260" key="GridCell.Tab.0.bottom/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596966122155" />
-    <state width="560" height="260" key="GridCell.Tab.0.center" timestamp="1596966122155">
+    <state width="489" height="254" key="GridCell.Tab.0.bottom/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597429004347" />
+    <state width="489" height="254" key="GridCell.Tab.0.center" timestamp="1597429004346">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state width="937" height="238" key="GridCell.Tab.0.center/1920.171.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596876990703" />
-    <state width="560" height="260" key="GridCell.Tab.0.center/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596966122155" />
-    <state width="560" height="260" key="GridCell.Tab.0.left" timestamp="1596966122155">
+    <state width="489" height="254" key="GridCell.Tab.0.center/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597429004346" />
+    <state width="489" height="254" key="GridCell.Tab.0.left" timestamp="1597429004344">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state width="937" height="238" key="GridCell.Tab.0.left/1920.171.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596876990703" />
-    <state width="560" height="260" key="GridCell.Tab.0.left/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596966122155" />
-    <state width="560" height="260" key="GridCell.Tab.0.right" timestamp="1596966122155">
+    <state width="489" height="254" key="GridCell.Tab.0.left/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597429004344" />
+    <state width="489" height="254" key="GridCell.Tab.0.right" timestamp="1597429004346">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state width="937" height="238" key="GridCell.Tab.0.right/1920.171.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596876990703" />
-    <state width="560" height="260" key="GridCell.Tab.0.right/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596966122155" />
+    <state width="489" height="254" key="GridCell.Tab.0.right/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597429004346" />
     <state width="1077" height="91" key="GridCell.Tab.1.bottom" timestamp="1596707187996">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
@@ -124,25 +127,29 @@
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state width="1077" height="91" key="GridCell.Tab.1.right/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596707187996" />
-    <state x="1997" y="228" key="SettingsEditor" timestamp="1596724118430">
+    <state x="1997" y="228" key="SettingsEditor" timestamp="1597146543571">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
-    <state x="1997" y="228" key="SettingsEditor/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596724118430" />
-    <state x="1942" y="266" width="1336" height="632" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1596957781603">
+    <state x="1997" y="228" key="SettingsEditor/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597146543571" />
+    <state x="1942" y="266" width="1336" height="632" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1597428112006">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
-    <state x="1942" y="266" width="1336" height="632" key="com.android.tools.idea.avdmanager.AvdListDialog/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596957781603" />
+    <state x="1942" y="266" width="1336" height="632" key="com.android.tools.idea.avdmanager.AvdListDialog/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597428112006" />
     <state x="2186" y="407" key="com.intellij.ide.util.TipDialog" timestamp="1596707208515">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
     <state x="2186" y="407" key="com.intellij.ide.util.TipDialog/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596707208515" />
-    <state x="2384" y="185" width="609" height="804" key="find.popup" timestamp="1596707643437">
+    <state x="2384" y="185" width="609" height="804" key="find.popup" timestamp="1597253300127">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
-    <state x="2384" y="185" width="609" height="804" key="find.popup/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596707643437" />
-    <state x="2146" y="276" key="run.anything.popup" timestamp="1596964877294">
+    <state x="2384" y="185" width="609" height="804" key="find.popup/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597253300127" />
+    <state x="2146" y="277" key="run.anything.popup" timestamp="1597068982520">
       <screen x="1920" y="171" width="1536" height="832" />
     </state>
-    <state x="2146" y="276" key="run.anything.popup/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1596964877294" />
+    <state x="2146" y="277" key="run.anything.popup/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597068982520" />
+    <state x="2262" y="325" width="672" height="678" key="search.everywhere.popup" timestamp="1597429020145">
+      <screen x="1920" y="171" width="1536" height="832" />
+    </state>
+    <state x="2262" y="325" width="672" height="678" key="search.everywhere.popup/1920.171.1536.832/0.0.1920.1040@1920.171.1536.832" timestamp="1597429020145" />
   </component>
 </project>
