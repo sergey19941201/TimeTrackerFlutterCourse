@@ -45,7 +45,7 @@ class Auth implements AuthBase {
   @override
   Future<User> signInAnonymously() async {
     await Future.delayed(
-        const Duration(milliseconds: 10)); // Optional parameter: () {});
+        const Duration(seconds: 1)); // Optional parameter: () {});
 
     isSignedIn = true;
     var user = User(uid: 'myUid');
