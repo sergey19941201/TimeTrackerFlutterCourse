@@ -9,11 +9,15 @@ import 'package:time_tracker_flutter_course/common_widgets/platform_exception_al
 import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class FirstSignInPage extends StatelessWidget {
+  const FirstSignInPage({Key key, @required this.bloc}) : super(key: key);
+  final SignInBloc bloc;
+
   static Widget create(BuildContext context) {
     return Provider<SignInBloc>(
       // _ is placeholder for the context argument
       create: (_) => SignInBloc(),
-      child: FirstSignInPage(),
+      child: Consumer<SignInBloc>(
+          builder: (context, bloc, _) => FirstSignInPage(bloc: bloc)),
     );
   }
 
@@ -34,7 +38,6 @@ class FirstSignInPage extends StatelessWidget {
   }
 
   Future<void> _signInAnonymously(BuildContext context) async {
-    final bloc = Provider.of<SignInBloc>(context, listen: false);
     try {
       bloc.setIsLoading(true);
       await Future.delayed(const Duration(seconds: 1));
@@ -50,7 +53,6 @@ class FirstSignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of<SignInBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Tracker'),
