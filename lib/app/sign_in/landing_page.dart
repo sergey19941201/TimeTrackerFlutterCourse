@@ -43,8 +43,7 @@ class _LandingPageState extends State<LandingPage> {
             User user = snapshot.data;
 
             if (user == null) {
-              return FirstSignInPage(
-              );
+              return FirstSignInPage.create(context);
             }
 
             return HomePage(); // Temp
@@ -52,7 +51,7 @@ class _LandingPageState extends State<LandingPage> {
             //return Scaffold(body: Center(child: CircularProgressIndicator()));
 
             //return  HomePage();
-            return FirstSignInPage();
+            return FirstSignInPage.create(context);
           }
         });
   }
