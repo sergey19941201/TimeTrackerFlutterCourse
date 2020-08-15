@@ -16,6 +16,7 @@ class FirstSignInPage extends StatelessWidget {
     return Provider<SignInBloc>(
       // _ is placeholder for the context argument
       create: (_) => SignInBloc(),
+      dispose: (context, bloc) => bloc.dispose(),
       child: Consumer<SignInBloc>(
           builder: (context, bloc, _) => FirstSignInPage(bloc: bloc)),
     );
