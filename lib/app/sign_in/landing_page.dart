@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker_flutter_course/app/home/jobs_page.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/first_sign_in_page.dart';
-import 'package:time_tracker_flutter_course/app/sign_in/home_page.dart';
 import 'package:time_tracker_flutter_course/services/auth.dart';
+import 'package:time_tracker_flutter_course/services/database.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -46,7 +47,9 @@ class _LandingPageState extends State<LandingPage> {
               return FirstSignInPage.create(context);
             }
 
-            return HomePage(); // Temp
+            return Provider<Database>(
+                create: (_) => FirestoreDatabase(uid: user.uid),
+                child: JobsPage()); // Temp
           } else {
             //return Scaffold(body: Center(child: CircularProgressIndicator()));
 
