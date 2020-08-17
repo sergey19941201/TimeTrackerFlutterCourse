@@ -9,8 +9,11 @@ import 'package:time_tracker_flutter_course/common_widgets/platform_exception_al
 import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class FirstSignInPage extends StatelessWidget {
-  const FirstSignInPage({Key key, @required this.bloc}) : super(key: key);
+  const FirstSignInPage(
+      {Key key, @required this.bloc, @required this.isLoading})
+      : super(key: key);
   final SignInBloc bloc;
+  final bool isLoading;
 
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
@@ -22,7 +25,8 @@ class FirstSignInPage extends StatelessWidget {
               // _ is placeholder for the context argument
               create: (_) => SignInBloc(auth: auth, isLoading: isLoading),
               child: Consumer<SignInBloc>(
-                  builder: (context, bloc, _) => FirstSignInPage(bloc: bloc)),
+                  builder: (context, bloc, _) =>
+                      FirstSignInPage(bloc: bloc, isLoading: isLoading.value,)),
             ),
       ),
     );
@@ -55,26 +59,25 @@ class FirstSignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = Provider.of<ValueNotifier<bool>>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Tracker'),
         elevation: 10.0,
       ),
       // StreamBuilder added as a parent only to the widgets that depend on it. Rebuild will be as little as possible
-      body: _buildContent(context, isLoading.value);
+      body: _buildContent(context);
       backgroundColor: Colors.grey[200],
     );
   }
 
-  Widget _buildContent(BuildContext context, bool isLoading) {
+  Widget _buildContent(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: 50, child: _buildHeader(isLoading)),
+          SizedBox(height: 50, child: _buildHeader()),
           SizedBox(height: 48),
           SocialSignInButton(
             assetName: 'images/google-logo.png',
@@ -116,7 +119,7 @@ class FirstSignInPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(bool isLoading) {
+  Widget _buildHeader() {
     if (isLoading) {
       return Center(
         child: CircularProgressIndicator(),
