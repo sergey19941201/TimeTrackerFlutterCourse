@@ -3,16 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/email_sign_in_page.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/sign_in_button.dart';
-import 'package:time_tracker_flutter_course/app/sign_in/sign_in_bloc.dart';
+import 'package:time_tracker_flutter_course/app/sign_in/sign_in_manager.dart';
 import 'package:time_tracker_flutter_course/app/sign_in/social_sign_in_button.dart';
 import 'package:time_tracker_flutter_course/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:time_tracker_flutter_course/services/auth.dart';
 
 class FirstSignInPage extends StatelessWidget {
   const FirstSignInPage(
-      {Key key, @required this.bloc, @required this.isLoading})
+      {Key key, @required this.manager, @required this.isLoading})
       : super(key: key);
-  final SignInBloc bloc;
+  final SignInManager manager;
   final bool isLoading;
 
   static Widget create(BuildContext context) {
@@ -21,12 +21,12 @@ class FirstSignInPage extends StatelessWidget {
       create: (_) => ValueNotifier<bool>(false),
       child: Consumer<ValueNotifier<bool>>(
         builder: (_, isLoading, __) =>
-            Provider<SignInBloc>(
+            Provider<SignInManager>(
               // _ is placeholder for the context argument
-              create: (_) => SignInBloc(auth: auth, isLoading: isLoading),
-              child: Consumer<SignInBloc>(
-                  builder: (context, bloc, _) =>
-                      FirstSignInPage(bloc: bloc, isLoading: isLoading.value,)),
+              create: (_) => SignInManager(auth: auth, isLoading: isLoading),
+              child: Consumer<SignInManager>(
+                  builder: (context, manager, _) =>
+                      FirstSignInPage(manager: manager, isLoading: isLoading.value,)),
             ),
       ),
     );
@@ -50,7 +50,7 @@ class FirstSignInPage extends StatelessWidget {
 
   Future<void> _signInAnonymously(BuildContext context) async {
     try {
-      User user = await bloc.signInAnonymously();
+      User user = await manager.signInAnonymously();
       //onSignIn(user);
     } on PlatformException catch (e) {
       _showSignInError(context, e);
@@ -65,7 +65,7 @@ class FirstSignInPage extends StatelessWidget {
         elevation: 10.0,
       ),
       // StreamBuilder added as a parent only to the widgets that depend on it. Rebuild will be as little as possible
-      body: _buildContent(context);
+      body: _buildContent(context),
       backgroundColor: Colors.grey[200],
     );
   }
