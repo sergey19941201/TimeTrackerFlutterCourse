@@ -14,12 +14,17 @@ class FirstSignInPage extends StatelessWidget {
 
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
-    return Provider<SignInBloc>(
-      // _ is placeholder for the context argument
-      create: (_) => SignInBloc(auth: auth),
-      dispose: (context, bloc) => bloc.dispose(),
-      child: Consumer<SignInBloc>(
-          builder: (context, bloc, _) => FirstSignInPage(bloc: bloc)),
+    return ChangeNotifierProvider<ValueNotifier<bool>>(
+      create: (_) => ValueNotifier<bool>(false),
+      child: Consumer<ValueNotifier<bool>>(
+        builder: (_, isLoading, __) =>
+            Provider<SignInBloc>(
+              // _ is placeholder for the context argument
+              create: (_) => SignInBloc(auth: auth, isLoading: isLoading),
+              child: Consumer<SignInBloc>(
+                  builder: (context, bloc, _) => FirstSignInPage(bloc: bloc)),
+            ),
+      ),
     );
   }
 
@@ -50,18 +55,14 @@ class FirstSignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = Provider.of<ValueNotifier<bool>>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Tracker'),
         elevation: 10.0,
       ),
       // StreamBuilder added as a parent only to the widgets that depend on it. Rebuild will be as little as possible
-      body: StreamBuilder<bool>(
-          stream: bloc.isLoadingStream,
-          initialData: false,
-          builder: (context, snapshot) {
-            return _buildContent(context, snapshot.data);
-          }),
+      body: _buildContent(context, isLoading.value);
       backgroundColor: Colors.grey[200],
     );
   }
