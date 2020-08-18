@@ -6,6 +6,8 @@ import 'package:time_tracker_flutter_course/app/home/models/job.dart';
 abstract class Database {
   void setJob(Job job);
 
+  void deleteJob(Job job);
+
   Stream<List<Job>> jobsStream();
 }
 
@@ -29,6 +31,12 @@ class FirestoreDatabase implements Database {
 
   void setJob(Job job) async {
     jobData.add(job);
+    _jobsController.add(jobData);
+  }
+
+  @override
+  void deleteJob(Job job) {
+    jobData.remove(job);
     _jobsController.add(jobData);
   }
 
