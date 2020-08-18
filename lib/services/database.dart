@@ -4,14 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:time_tracker_flutter_course/app/home/models/job.dart';
 
 abstract class Database {
-  void createJob(Job job);
+  void setJob(Job job);
 
   Stream<List<Job>> jobsStream();
 }
 
 class FirestoreDatabase implements Database {
-  FirestoreDatabase({@required this.uid}) : assert(uid != null){
-    jobData= List<Job>.from([Job(name: 'initial job', ratePerHour: 22)]);
+  FirestoreDatabase({@required this.uid}) : assert(uid != null) {
+    jobData = List<Job>.from([Job(name: 'initial job', ratePerHour: 22)]);
     _jobsController.add(jobData);
   }
 
@@ -26,7 +26,7 @@ class FirestoreDatabase implements Database {
 
   final String uid;
 
-  void createJob(Job job) {
+  void setJob(Job job) async {
     jobData.add(job);
     _jobsController.add(jobData);
   }
