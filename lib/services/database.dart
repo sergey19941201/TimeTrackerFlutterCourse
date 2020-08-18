@@ -11,7 +11,8 @@ abstract class Database {
 
 class FirestoreDatabase implements Database {
   FirestoreDatabase({@required this.uid}) : assert(uid != null) {
-    jobData = List<Job>.from([Job(name: 'initial job', ratePerHour: 22)]);
+    //jobData = List<Job>.from([Job(name: 'initial job', ratePerHour: 22)]);
+    jobData = List<Job>();
     _jobsController.add(jobData);
   }
 
